@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { createContactAction } from 'store/contact/slice';
+import { createContactThunk } from 'store/contact/actions';
 import css from './CreateContact.module.css';
 
 const FormCreateContact = () => {
@@ -28,7 +28,7 @@ const FormCreateContact = () => {
     if (isAlreadyExist) {
       resetForm();
       return alert(`${name} is already in contacts`);
-    } else dispatch(createContactAction({ name, number, isValid }));
+    } else dispatch(createContactThunk({ name, number, isValid }));
     resetForm();
   };
 
